@@ -1,9 +1,9 @@
 package com.mineviet.siegebattle.core.arena;
 
-import java.util.ArrayList;
-import java.util.List;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
+
+import java.util.List;
 
 public class Arena {
     
@@ -18,7 +18,6 @@ public class Arena {
     private Location bauVatSpawn;
 
     public Arena() {
-
     }
 
     public Arena(String name, Location lobbyLocation, Location teamALocation, Player teamACaptain, Location teamBLocation, int minPlayers, int maxPlayers, List<String> players, Location bauVatSpawn) {
