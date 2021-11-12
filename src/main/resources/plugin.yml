@@ -1,0 +1,7 @@
+name: SiegeBattle
+version: '${project.version}'
+main: com.mineviet.siegebattle.Main
+api-version: 1.15
+authors: [LightMaxVn, CreeperboyMCVN]
+description: Siege Battle is the exclusive game only for MINEVIET network
+website: www.mineviet.com
