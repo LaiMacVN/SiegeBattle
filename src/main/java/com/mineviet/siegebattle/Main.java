@@ -1,33 +1,23 @@
-/* Source code by CreeperboyMCVN, DO NOT RECODE OR RE-UP*/
-/*Author CreeperboyMCVN, LightMaxVN*/
-
 package com.mineviet.siegebattle;
 
 import com.mineviet.siegebattle.util.Storage;
+import com.mineviet.siegebattle.util.Utils;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class Main extends JavaPlugin {
-    
-    private Storage string;
-    private static Main pl;
-    
+public final class Main extends JavaPlugin {
+
+    public Storage message;
+    public Utils utils;
+
     @Override
     public void onEnable() {
-        setInst(this);
-        saveDefaultConfig();
-        string = new Storage(this, "String.yml");
-    }
-    
-    private void setInst(Main pl) {
-        Main.pl = pl;
-    }
-    
-    public static Main getInst() {
-        return Main.pl;
-    }
-    
-    public Storage getStringFile() {
-        return string;
+        // Plugin startup logic
+        this.message = new Storage(this, "String.yml");
+        this.utils = new Utils(this);
     }
 
+    @Override
+    public void onDisable() {
+        // Plugin shutdown logic
+    }
 }

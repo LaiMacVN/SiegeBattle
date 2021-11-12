@@ -1,9 +1,5 @@
 package com.mineviet.siegebattle.core.arena;
 
-import com.mineviet.siegebattle.core.player.PlayerManager;
-import com.mineviet.siegebattle.core.player.PlayerState;
-import com.mineviet.siegebattle.util.Strings;
-import com.mineviet.siegebattle.util.Values;
 import java.util.ArrayList;
 import java.util.List;
 import org.bukkit.Location;
@@ -12,52 +8,101 @@ import org.bukkit.entity.Player;
 public class Arena {
     
     private String name;
-    private Location spawn;
-    private Location spawnDef;
-    private Location spawnEn;
-    private int minPlayer;
+    private Location lobbyLocation;
+    private Location teamALocation;
+    private Player teamACaptain;
+    private Location teamBLocation;
+    private int minPlayers;
+    private int maxPlayers;
     private List<String> players;
-    private ArenaState as = ArenaState.WAITING;
-    
-    public Arena(String name, Location spawn, Location spawnDef, Location spawnEn, int minPlayer) {
+    private Location bauVatSpawn;
+
+    public Arena() {
+
+    }
+
+    public Arena(String name, Location lobbyLocation, Location teamALocation, Player teamACaptain, Location teamBLocation, int minPlayers, int maxPlayers, List<String> players, Location bauVatSpawn) {
         this.name = name;
-        this.spawn = spawn;
-        this.spawnDef = spawnDef;
-        this.spawnEn = spawnEn;
-        this.minPlayer = minPlayer;
-        players = new ArrayList<>();
+        this.lobbyLocation = lobbyLocation;
+        this.teamALocation = teamALocation;
+        this.teamACaptain = teamACaptain;
+        this.teamBLocation = teamBLocation;
+        this.minPlayers = minPlayers;
+        this.maxPlayers = maxPlayers;
+        this.players = players;
+        this.bauVatSpawn = bauVatSpawn;
     }
-    
-    public void addPlayer(Player p) {
-        if (PlayerManager.getPlayerState(p) != PlayerState.WAITING) {
-            p.sendMessage(Strings.chatPrefix(Values.JOIN_FROM_ANOTHER));
-            return;
-        }
-        if (as != ArenaState.WAITING && as != ArenaState.STARTING) {
-            p.sendMessage(Strings.chatPrefix(Values.ARENA_STARTED));
-            return;
-        }
-        
-        if (getPlayers().size() == 16) {
-            p.sendMessage(Strings.chatPrefix(Values.ARENA_FULL));
-            return;
-        }
-    }
-    
+
     public String getName() {
-        return this.name;
+        return name;
     }
-    
-    public int getMinPlayer() {
-        return minPlayer;
+
+    public void setName(String name) {
+        this.name = name;
     }
-    
+
+    public Location getLobbyLocation() {
+        return lobbyLocation;
+    }
+
+    public void setLobbyLocation(Location lobbyLocation) {
+        this.lobbyLocation = lobbyLocation;
+    }
+
+    public Location getTeamALocation() {
+        return teamALocation;
+    }
+
+    public void setTeamALocation(Location teamALocation) {
+        this.teamALocation = teamALocation;
+    }
+
+    public Player getTeamACaptain() {
+        return teamACaptain;
+    }
+
+    public void setTeamACaptain(Player teamACaptain) {
+        this.teamACaptain = teamACaptain;
+    }
+
+    public Location getTeamBLocation() {
+        return teamBLocation;
+    }
+
+    public void setTeamBLocation(Location teamBLocation) {
+        this.teamBLocation = teamBLocation;
+    }
+
+    public int getMinPlayers() {
+        return minPlayers;
+    }
+
+    public void setMinPlayers(int minPlayers) {
+        this.minPlayers = minPlayers;
+    }
+
+    public int getMaxPlayers() {
+        return maxPlayers;
+    }
+
+    public void setMaxPlayers(int maxPlayers) {
+        this.maxPlayers = maxPlayers;
+    }
+
     public List<String> getPlayers() {
-        return this.players;
+        return players;
     }
-    
-    public void setArenaState(ArenaState as) {
-        if (this.as == as) return;
-        this.as = as;
+
+    public void setPlayers(List<String> players) {
+        this.players = players;
     }
+
+    public Location getBauVatSpawn() {
+        return bauVatSpawn;
+    }
+
+    public void setBauVatSpawn(Location bauVatSpawn) {
+        this.bauVatSpawn = bauVatSpawn;
+    }
+
 }
