@@ -3,3 +3,7 @@ prefix: "&7&l[&6&lSiegeBattle&7&l]"
 joinFromAnother: "&cBạn đang ở trong 1 trận, hãy thoát khỏi bằng &4/sb leave"
 arenaStarted: "&cXin lỗi! Phòng này đã bắt đầu!"
 arenaFull: "&cXin lỗi! Phòng này đã đầy!"
+arenaJoined: "&aĐã tham gia phòng %1"
+arenaJoinNotify: "&2%1 đã tham gia &7(&3%2&7/&3%3&7)"
+
+countdownInterval: "&aPhòng sẽ bắt đầu trong %1s"

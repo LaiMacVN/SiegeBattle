@@ -14,22 +14,22 @@ public class Arena {
     private Location teamBLocation;
     private int minPlayers;
     private int maxPlayers;
-    private List<String> players;
+    private List<Player> players;
     private Location bauVatSpawn;
+    private ArenaState arenaState;
 
     public Arena() {
     }
 
-    public Arena(String name, Location lobbyLocation, Location teamALocation, Player teamACaptain, Location teamBLocation, int minPlayers, int maxPlayers, List<String> players, Location bauVatSpawn) {
+    public Arena(String name, Location lobbyLocation, Location teamALocation, Location teamBLocation, int minPlayers, int maxPlayers, Location bauVatSpawn) {
         this.name = name;
         this.lobbyLocation = lobbyLocation;
         this.teamALocation = teamALocation;
-        this.teamACaptain = teamACaptain;
         this.teamBLocation = teamBLocation;
         this.minPlayers = minPlayers;
         this.maxPlayers = maxPlayers;
-        this.players = players;
         this.bauVatSpawn = bauVatSpawn;
+        this.arenaState = ArenaState.WAITING;
     }
 
     public String getName() {
@@ -88,13 +88,10 @@ public class Arena {
         this.maxPlayers = maxPlayers;
     }
 
-    public List<String> getPlayers() {
+    public List<Player> getPlayers() {
         return players;
     }
 
-    public void setPlayers(List<String> players) {
-        this.players = players;
-    }
 
     public Location getBauVatSpawn() {
         return bauVatSpawn;
@@ -102,6 +99,21 @@ public class Arena {
 
     public void setBauVatSpawn(Location bauVatSpawn) {
         this.bauVatSpawn = bauVatSpawn;
+    }
+    
+    public void setArenaState(ArenaState state) {
+        if (arenaState == state) return;
+        this.arenaState = state;
+    }
+    
+    public ArenaState getArenaState() {
+        return this.arenaState;
+    }
+    
+    public void sendMessage(String s) {
+        for (Player p: getPlayers()) {
+            p.sendMessage(s);
+        }
     }
 
 }

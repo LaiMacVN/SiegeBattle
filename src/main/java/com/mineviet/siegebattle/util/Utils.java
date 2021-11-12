@@ -17,6 +17,10 @@ public class Utils {
     public String color(String s) {
         return ChatColor.translateAlternateColorCodes('&', s);
     }
+    
+    public String chatPrefix(String s) {
+        return color(Main.getInst().message.getConfig().getString("prefix")+" "+s);
+    } 
 
     public String deColor(String s) {
         return ChatColor.stripColor(s);

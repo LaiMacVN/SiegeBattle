@@ -5,7 +5,8 @@ import java.util.Map;
 import org.bukkit.entity.Player;
 
 public class PlayerManager {
-
+    
+    public PlayerManager() {};
 
     public Map<Player, PlayerState> states = new HashMap<>();
     
