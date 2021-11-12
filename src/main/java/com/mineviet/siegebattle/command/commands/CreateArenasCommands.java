@@ -5,7 +5,7 @@ import com.mineviet.siegebattle.Main;
 import com.mineviet.siegebattle.command.ICommands;
 import com.mineviet.siegebattle.core.arena.Arena;
 import org.bukkit.entity.Player;
-import org.jetbrains.annotations.Nullable;
+
 
 public class CreateArenasCommands extends ICommands {
 
@@ -22,12 +22,12 @@ public class CreateArenasCommands extends ICommands {
     }
 
     @Override
-    public @Nullable String getDesc() {
+    public String getDesc() {
         return "Tạo một đấu trường mời";
     }
 
     @Override
-    public @Nullable String getSyntax() {
+    public String getSyntax() {
         return "/sb create";
     }
 

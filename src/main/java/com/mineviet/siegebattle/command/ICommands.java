@@ -1,7 +1,7 @@
 package com.mineviet.siegebattle.command;
 
 import org.bukkit.entity.Player;
-import org.jetbrains.annotations.Nullable;
+
 
 public abstract class ICommands {
 
@@ -11,12 +11,10 @@ public abstract class ICommands {
 
 
     // này là description của command
-    @Nullable
     public abstract String getDesc();
 
 
     // này là lấy syntax command
-    @Nullable
     public abstract String getSyntax();
 
     // này là lấy permission

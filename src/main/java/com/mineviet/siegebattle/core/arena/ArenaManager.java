@@ -78,5 +78,9 @@ public class ArenaManager {
         return null;
     }
     
+    public PlayerManager getPlayerManager() {
+        return pm;
+    }
+    
 
 }

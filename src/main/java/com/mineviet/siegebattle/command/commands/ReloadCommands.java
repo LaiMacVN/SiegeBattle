@@ -4,7 +4,6 @@ import com.mineviet.siegebattle.Main;
 import com.mineviet.siegebattle.command.ICommands;
 import com.mineviet.siegebattle.util.Values;
 import org.bukkit.entity.Player;
-import org.jetbrains.annotations.Nullable;
 
 public class ReloadCommands extends ICommands {
 
@@ -21,12 +20,12 @@ public class ReloadCommands extends ICommands {
     }
 
     @Override
-    public @Nullable String getDesc() {
+    public String getDesc() {
         return "Tải lại plugin";
     }
 
     @Override
-    public @Nullable String getSyntax() {
+    public String getSyntax() {
         return "/sb reload";
     }
 

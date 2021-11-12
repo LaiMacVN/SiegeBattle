@@ -7,8 +7,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +37,7 @@ public class CommandsManagers implements TabExecutor {
 
     // command perform
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+    public boolean onCommand( CommandSender sender, Command command, String label, String[] args) {
 
         if (sender instanceof Player) {
             Player p = (Player) sender;
@@ -71,9 +70,8 @@ public class CommandsManagers implements TabExecutor {
     }
 
     // tab completion perform
-    @Nullable
     @Override
-    public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, @NotNull String[] args) {
+    public List<String> onTabComplete( CommandSender sender, Command command, String alias, String[] args) {
         List<String> commandsList = new ArrayList<>();
         for (ICommands subCommands : commands) {
             if (sender.hasPermission(subCommands.getPermission()) || subCommands.getPermission().equalsIgnoreCase("default")) {
