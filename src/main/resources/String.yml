@@ -4,6 +4,8 @@ joinFromAnother: "&cBạn đang ở trong 1 trận, hãy thoát khỏi bằng &4
 arenaStarted: "&cXin lỗi! Phòng này đã bắt đầu!"
 arenaFull: "&cXin lỗi! Phòng này đã đầy!"
 arenaJoined: "&aĐã tham gia phòng %1"
-arenaJoinNotify: "&2%1 đã tham gia &7(&3%2&7/&3%3&7)"
+arenaJoinNotify: "&2%1 đã tham gia trò chơi &7(&3%2&7/&3%3&7)"
+
+ReloadedConfig: "&aĐã tải lại config"
 
 countdownInterval: "&aPhòng sẽ bắt đầu trong %1s"

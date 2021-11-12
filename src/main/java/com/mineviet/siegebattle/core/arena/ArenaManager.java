@@ -3,26 +3,41 @@ package com.mineviet.siegebattle.core.arena;
 import com.mineviet.siegebattle.Main;
 import com.mineviet.siegebattle.core.player.PlayerManager;
 import com.mineviet.siegebattle.core.player.PlayerState;
-import com.mineviet.siegebattle.util.Utils;
 import com.mineviet.siegebattle.util.Values;
-import java.util.ArrayList;
-import java.util.List;
 import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ArenaManager {
-    
+
     private Main inst;
     private PlayerManager pm;
     private List<Arena> arenas = new ArrayList<>();
-    
-    public ArenaManager() {};
-    
+
+    public ArenaManager() {
+    }
+
+    ;
+
+
+    // check if player is create arena with the same name
+    public boolean checkArenas(String name) {
+        for (Arena arena : arenas) {
+            if (arena.getName().equalsIgnoreCase(name)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public ArenaManager(Main pl) {
         this.inst = pl;
         pm = new PlayerManager();
     }
-    
+
     public void addPlayer(Player p, Arena a) {
         if (!(pm.getPlayerState(p) == PlayerState.WAITING)) {
             p.sendMessage(inst.utils.chatPrefix(Values.JOIN_FROM_ANOTHER));
@@ -43,10 +58,10 @@ public class ArenaManager {
             .replace("%2", String.valueOf(a.getPlayers().size()))
             .replace("%3", String.valueOf(a.getMaxPlayers()))));
     }
-    
+
     //Arena things
-    public void loadArena(String name, Location lobbyLocation, Location teamALocation, Location teamBLocation, int minPlayers, int maxPlayers, Location bauVatSpawn) {
-        arenas.add(new Arena(name, lobbyLocation, teamALocation, teamBLocation, minPlayers, maxPlayers, bauVatSpawn));
+    public void loadArena(String name, Location lobbyLocation, Location teamALocation, Location teamBLocation, Location deathLocation, int minPlayers, int maxPlayers, Location bauVatSpawn, Location corner1, Location corner2, World world) {
+        arenas.add(new Arena(name, lobbyLocation, teamALocation, teamBLocation, deathLocation, minPlayers, maxPlayers, bauVatSpawn, corner1, corner2, world));
         inst.getLogger().info("Successfully loaded arena %".replace("%", name));
     }
     
