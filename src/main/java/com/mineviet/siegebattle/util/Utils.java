@@ -1,6 +1,7 @@
 package com.mineviet.siegebattle.util;
 
 import com.mineviet.siegebattle.Main;
+import com.mineviet.siegebattle.core.arena.ArenaMode;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -10,6 +11,21 @@ public class Utils {
 
     Main plugin;
 
+    public ArenaMode getMode(String name) {
+        switch (name) {
+            case "3v3":
+                return ArenaMode.THREE_VS_THREE;
+            case "5v5":
+                return ArenaMode.FIVE_VS_FIVE;
+            case "7v7":
+                return ArenaMode.SEVEN_VS_SEVEN;
+            case "9v9":
+                return ArenaMode.NIGHT_VS_NIGHT;
+            default:
+                return null;
+        }
+    }
+
     public Utils(Main plugin) {
         this.plugin = plugin;
     }
@@ -17,7 +33,7 @@ public class Utils {
     public String color(String s) {
         return ChatColor.translateAlternateColorCodes('&', s);
     }
-    
+
     public String chatPrefix(String s) {
         return color(Main.getInst().message.getConfig().getString("prefix")+" "+s);
     } 

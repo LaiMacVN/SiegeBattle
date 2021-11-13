@@ -94,7 +94,7 @@ public class CreateItemEvent implements Listener {
                 if (e.getAction() == Action.LEFT_CLICK_AIR || e.getAction() == Action.LEFT_CLICK_BLOCK || e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) {
                     e.setCancelled(true);
                     Location bauVatLocation = player.getLocation();
-                    arena.setBauVatSpawn(bauVatLocation);
+                    arena.setBauVatLocation(bauVatLocation);
                     player.sendMessage(plugin.utils.color("&a&l&m---------------------"));
                     player.sendMessage(plugin.utils.color("&bChỉnh vị trí của báu vật tại:"));
                     player.sendMessage(plugin.utils.color("&aX: &b" + bauVatLocation.getX()));
@@ -107,7 +107,8 @@ public class CreateItemEvent implements Listener {
             if (displayName.equals(ItemID.SET_CORNER.getName())) {
                 if (e.getAction() == Action.LEFT_CLICK_BLOCK) {
                     e.setCancelled(true);
-                    Location corner1 = player.getLocation();
+                    if (e.getClickedBlock() == null) return;
+                    Location corner1 = e.getClickedBlock().getLocation();
                     arena.setCorner1(corner1);
                     player.sendMessage(plugin.utils.color("&a&l&m---------------------"));
                     player.sendMessage(plugin.utils.color("&bChỉnh góc 1 của đấu trường tại:"));
@@ -117,15 +118,14 @@ public class CreateItemEvent implements Listener {
                     player.sendMessage(plugin.utils.color("&a&l&m---------------------"));
                 } else if (e.getAction() == Action.RIGHT_CLICK_BLOCK) {
                     e.setCancelled(true);
-                    Location corner2 = player.getLocation();
+                    if (e.getClickedBlock() == null) return;
+                    Location corner2 = e.getClickedBlock().getLocation();
                     arena.setCorner2(corner2);
                     player.sendMessage(plugin.utils.color("&a&l&m---------------------"));
                     player.sendMessage(plugin.utils.color("&bChỉnh góc 2 của đấu trường tại:"));
                     player.sendMessage(plugin.utils.color("&aX: &b" + corner2.getX()));
                     player.sendMessage(plugin.utils.color("&aY: &b" + corner2.getY()));
                     player.sendMessage(plugin.utils.color("&aZ: &b" + corner2.getZ()));
-                    player.sendMessage(plugin.utils.color("&aYaw: &b" + corner2.getYaw()));
-                    player.sendMessage(plugin.utils.color("&aPitch: &b" + corner2.getPitch()));
                     player.sendMessage(plugin.utils.color("&a&l&m---------------------"));
                 }
                 return;
@@ -156,6 +156,7 @@ public class CreateItemEvent implements Listener {
                         } else {
                             player.getInventory().clear();
                         }
+                        plugin.mapUtils.write(arena, plugin.arenaData.getConfig());
 
                     } else {
                         player.sendMessage(plugin.utils.color("&cBạn cần phải hoàn thành xong đấu trường trước khi save"));

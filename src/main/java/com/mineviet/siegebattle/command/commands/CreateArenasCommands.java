@@ -28,7 +28,7 @@ public class CreateArenasCommands extends ICommands {
 
     @Override
     public String getSyntax() {
-        return "/sb create";
+        return "/sb create <arenaName> <arenaMode>";
     }
 
     @Override
@@ -38,7 +38,7 @@ public class CreateArenasCommands extends ICommands {
 
     @Override
     public void perform(Player player, String[] args) {
-        if (args.length == 1) {
+        if (args.length <= 2) {
             if (plugin.playerEditMode.containsKey(player.getUniqueId())) {
                 // they want to get out edit mode
                 plugin.playerEditMode.remove(player.getUniqueId());
@@ -55,7 +55,7 @@ public class CreateArenasCommands extends ICommands {
                 return;
             }
         }
-        if (args.length > 1) {
+        if (args.length > 2) {
             if (plugin.playerEditMode.containsKey(player.getUniqueId())) {
                 // they want to get out edit mode
                 plugin.playerEditMode.remove(player.getUniqueId());
@@ -69,10 +69,17 @@ public class CreateArenasCommands extends ICommands {
             }
             if (!plugin.playerEditMode.containsKey(player.getUniqueId())) {
                 String arenaName = args[1];
+                String mode = args[2];
+
+                if (plugin.utils.getMode(mode) == null) {
+                    player.sendMessage(plugin.utils.color("Có những chế độ sau: 3v3, 5v5, 7v7, 9v9"));
+                    return;
+                }
+
                 if (plugin.am.checkArenas(arenaName)) {
                     // generate an edit mode for player
 
-                    plugin.playerEditMode.put(player.getUniqueId(), new Arena(arenaName));
+                    plugin.playerEditMode.put(player.getUniqueId(), new Arena(arenaName, plugin.utils.getMode(mode).getSize()));
 
                     //save player temp inventory
 

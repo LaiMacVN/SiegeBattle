@@ -20,10 +20,8 @@ public class ArenaManager {
     public ArenaManager() {
     }
 
-    ;
 
-
-    // check if player is create arena with the same name
+    // check if player is created arena with the same name
     public boolean checkArenas(String name) {
         for (Arena arena : arenas) {
             if (arena.getName().equalsIgnoreCase(name)) {
@@ -54,14 +52,14 @@ public class ArenaManager {
         a.getPlayers().add(p);
         p.sendMessage(inst.utils.chatPrefix(Values.ARENA_JOINED.replace("%1", a.getName())));
         a.sendMessage(inst.utils.chatPrefix(Values.ARENA_JOIN_NOTIFY
-            .replace("%1", p.getName())
-            .replace("%2", String.valueOf(a.getPlayers().size()))
-            .replace("%3", String.valueOf(a.getMaxPlayers()))));
+                .replace("%1", p.getName())
+                .replace("%2", String.valueOf(a.getPlayers().size()))
+                .replace("%3", String.valueOf((a.getTeamSize() * 2)))));
     }
 
     //Arena things
-    public void loadArena(String name, Location lobbyLocation, Location teamALocation, Location teamBLocation, Location deathLocation, int minPlayers, int maxPlayers, Location bauVatSpawn, Location corner1, Location corner2, World world) {
-        arenas.add(new Arena(name, lobbyLocation, teamALocation, teamBLocation, deathLocation, minPlayers, maxPlayers, bauVatSpawn, corner1, corner2, world));
+    public void loadArena(String name, Location lobbyLocation, Location teamALocation, Location teamBLocation, Location deathLocation, int size, Location bauVatSpawn, Location corner1, Location corner2, World world) {
+        arenas.add(new Arena(name, lobbyLocation, teamALocation, teamBLocation, deathLocation, size, bauVatSpawn, corner1, corner2, world));
         inst.getLogger().info("Successfully loaded arena %".replace("%", name));
     }
     

@@ -2,6 +2,7 @@ package com.mineviet.siegebattle;
 
 import com.mineviet.siegebattle.Item.CreateItemEvent;
 import com.mineviet.siegebattle.Item.ItemCreate;
+import com.mineviet.siegebattle.MapManagers.MapUtils;
 import com.mineviet.siegebattle.command.CommandsManagers;
 import com.mineviet.siegebattle.core.arena.Arena;
 import com.mineviet.siegebattle.core.arena.ArenaManager;
@@ -22,10 +23,12 @@ public final class Main extends JavaPlugin {
     public Map<UUID, ItemStack[]> playerInventoryEditModeSave = new HashMap<>();
 
     public Storage message;
+    public Storage arenaData;
     public Utils utils;
     public ArenaManager am;
     public ItemCreate itemCreate;
     public CommandsManagers commandsManagers;
+    public MapUtils mapUtils;
 
 
     private static Main inst;
@@ -36,11 +39,15 @@ public final class Main extends JavaPlugin {
         this.setInst(this);
         saveDefaultConfig();
         this.message = new Storage(this, "String.yml");
+        this.arenaData = new Storage(this, "ArenaData.yml");
         this.utils = new Utils(this);
         this.am = new ArenaManager(this);
         this.itemCreate = new ItemCreate();
         this.commandsManagers = new CommandsManagers(this);
+        this.mapUtils = new MapUtils(this);
         this.itemCreate.init();
+
+        this.mapUtils.read();
 
         getCommand("sb").setExecutor(this.commandsManagers);
 

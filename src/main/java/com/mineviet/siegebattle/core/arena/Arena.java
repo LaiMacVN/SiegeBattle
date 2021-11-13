@@ -14,34 +14,34 @@ public class Arena {
     private Player teamACaptain;
     private Location teamBLocation;
     private Location deathLocation;
-    private int minPlayers;
-    private int maxPlayers;
+    private int teamSize;
     private List<Player> players;
-    private Location bauVatSpawn;
+    private Location bauVatLocation;
     private ArenaState arenaState;
     private Location corner1;
     private Location corner2;
     private World world;
 
     /**
-     * @param name generate an arenas when create only for the name
+     * @param name
+     * @param teamSize
      */
-    public Arena(String name) {
+    public Arena(String name, int teamSize) {
         this.name = name;
+        this.teamSize = teamSize;
     }
 
     public Arena() {
     }
 
-    public Arena(String name, Location lobbyLocation, Location teamALocation, Location teamBLocation, Location deathLocation, int minPlayers, int maxPlayers, Location bauVatSpawn, Location corner1, Location corner2, World world) {
+    public Arena(String name, Location lobbyLocation, Location teamALocation, Location teamBLocation, Location deathLocation, int size, Location bauVatSpawn, Location corner1, Location corner2, World world) {
         this.name = name;
         this.lobbyLocation = lobbyLocation;
         this.teamALocation = teamALocation;
         this.teamBLocation = teamBLocation;
         this.deathLocation = deathLocation;
-        this.minPlayers = minPlayers;
-        this.maxPlayers = maxPlayers;
-        this.bauVatSpawn = bauVatSpawn;
+        this.teamSize = size;
+        this.bauVatLocation = bauVatSpawn;
         this.arenaState = ArenaState.WAITING;
         this.corner1 = corner1;
         this.corner2 = corner2;
@@ -51,7 +51,7 @@ public class Arena {
     // check thử coi người chơi đó đã tạo thành công arena với các thông số đã đưa
     public boolean isComplete() {
         return name != null && lobbyLocation != null && teamALocation != null
-                && teamBLocation != null && deathLocation != null && bauVatSpawn != null;
+                && teamBLocation != null && deathLocation != null && bauVatLocation != null;
     }
 
     public String getName() {
@@ -102,33 +102,26 @@ public class Arena {
         this.deathLocation = deathLocation;
     }
 
-    public int getMinPlayers() {
-        return minPlayers;
+    public int getTeamSize() {
+        return teamSize;
     }
 
-    public void setMinPlayers(int minPlayers) {
-        this.minPlayers = minPlayers;
+    public void setTeamSize(int teamSize) {
+        this.teamSize = teamSize;
     }
 
-    public int getMaxPlayers() {
-        return maxPlayers;
-    }
-
-    public void setMaxPlayers(int maxPlayers) {
-        this.maxPlayers = maxPlayers;
-    }
 
     public List<Player> getPlayers() {
         return players;
     }
 
 
-    public Location getBauVatSpawn() {
-        return bauVatSpawn;
+    public Location getBauVatLocation() {
+        return bauVatLocation;
     }
 
-    public void setBauVatSpawn(Location bauVatSpawn) {
-        this.bauVatSpawn = bauVatSpawn;
+    public void setBauVatLocation(Location bauVatLocation) {
+        this.bauVatLocation = bauVatLocation;
     }
 
     public void setArenaState(ArenaState state) {

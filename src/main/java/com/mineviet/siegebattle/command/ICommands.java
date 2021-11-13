@@ -9,7 +9,6 @@ public abstract class ICommands {
 
     public abstract String getName();
 
-
     // này là description của command
     public abstract String getDesc();
 

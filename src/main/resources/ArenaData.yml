@@ -1,0 +1,40 @@
+Test:
+  World: Test
+  PerTeamSize: 3
+  TeamOneLocation:
+    X: 10
+    Y: 10
+    Z: 10
+    Yaw: 10
+    Pitch: 10
+  TeamTwoLocation:
+    X: 10
+    Y: 10
+    Z: 10
+    Yaw: 10
+    Pitch: 10
+  LobbyLocation:
+    X: 10
+    Y: 10
+    Z: 10
+    Yaw: 10
+    Pitch: 10
+  DeathLocation:
+    X: 10
+    Y: 10
+    Z: 10
+    Yaw: 10
+    Pitch: 10
+  BauVauLocation:
+    X: 10
+    Y: 10
+    Z: 10
+  Corner1:
+    X: 10
+    Y: 10
+    Z: 10
+  Corner2:
+    X: 10
+    Y: 10
+    Z: 10
+
